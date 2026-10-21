@@ -48,9 +48,9 @@
         postPrompt: ""
         postPromptOrder: 5100
         autoRetry: true
-        retryMax: 3
+        retryMax: 10
         autoContinue: false
-        continueMax: 3
+        continueMax: 10
         continueText: "继续"
         capabilityProtocol: true
         hooksDenyBypass: true

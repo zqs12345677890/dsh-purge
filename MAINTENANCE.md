@@ -19,6 +19,7 @@
 |---|---|---|
 | `lib/core.js` | 新增 `DISPLAY_HIDE_ON_WIN32 = new Set([6, 30, 31])`，在 `groupPatchesForDisplay` 中跳过；三条 `desc` 加注「Windows 空转 / 未配 hook 时空转」 | 状态页只显示 Windows 上真正生效的补丁（74 → 72 行）；补丁定义保留，保证「还原」仍能恢复对应文件 |
 | `lib/index.js` | 注释掉 `installRegionGate(ctx)` | 关闭作者内置的区域/银行拒绝闸门（命中 .cn/.hk/.mo 后缀或 chase/citi 等银行域名时整轮被替换成「不行，这是严令禁止的」）。`lib/net-scope.js` 保留，恢复只需取消注释 |
+| `lib/continue-retry.js` + `cordis.patch.yml` | `retryMax` / `continueMax` 3 → 10 | 自动重试与自动续跑上限放宽；`autoContinue` 仍为 false（默认不自动续跑，只在显式打开时生效） |
 | `profiles/desktop/node_modules/dsh-purge` | 实拷贝 → 指向本目录的 junction（旧副本备份 `dsh-purge.copy-bak-20261021`） | 宿主加载的就是这份代码，避免两份漂移 |
 
 改动原则：**只动展示层与本地环境，不改补丁语义**。任何影响宿主行为的改动必须先确认回滚路径。
