@@ -1,6 +1,10 @@
 # dsh-purge 维护说明（本地维护分支）
 
-上游 `YuJunZhiXue/dsh-purge` 已于 2026-10-27 关库，GitHub 404。本目录是最后一份 master（本地版本号仍写 `1.1.71`，实际代码为 2026-10-19 的快照，比公开镜像 mmparko 的 v1.1.71 tag 多 #87–#92），由本地自行维护。
+上游 `YuJunZhiXue/dsh-purge` 已于 2026-10-27 关库，GitHub 404。本目录是最后一份 master（上游版本号停留在 `1.1.71`，实际代码为 2026-10-19 的快照，比公开镜像 mmparko 的 v1.1.71 tag 多 #87–#92），由本地自行维护。
+
+- 本地版本号：**`1.1.72-lg.1`**（`-lg` = local guard，标明本地维护，非上游发布）
+- 维护范围：**仅 Windows 桌面端**。web 面、macOS / Linux 的补丁不在维护范围内，官方升级后不保证可用。
+- 分支：`local-maintenance`（`master` 保留上游快照不动）
 
 ## 来源与校验
 
