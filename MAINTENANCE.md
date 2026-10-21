@@ -43,7 +43,25 @@
 pwsh -NoProfile -File scripts/selfcheck.ps1
 ```
 
-检查：插件版本、profile junction、asar 换包状态、宿主加载路径、补丁 applied/pending/skipped、官方更新开关。
+检查：插件版本、profile junction、asar 换包状态、宿主加载路径、补丁 applied/pending/skipped、官方更新开关；并输出外部工具链的到位情况。
+
+## 工具链（外部依赖，不随插件分发）
+
+装在 `C:\Users\zhong\bin`（已在用户 PATH），Defender 已把该目录列入排除：
+
+| 工具 | 版本 / 来源 | 备注 |
+|---|---|---|
+| nmap | 7.92 便携包（`bin\nmap\nmap.exe`） | 未装 Npcap，`-sS/-O` 等需要抓包的扫描会退化为 connect() |
+| fscan | 2.2.2 | |
+| ffuf | 2.1.0-dev（`go install`） | |
+| nuclei | 3.11.1（`go install`，自动切 go1.26） | 首次跑需 `nuclei -update-templates` |
+| httpx | 1.12.0（`go install`） | |
+| subfinder | 2.17.0（`go install`） | |
+| sqlmap | 1.10.10.14（源码 + `bin\sqlmap.cmd` 包装） | 依赖系统 Python 3.12 |
+| chisel | 1.12.0 | 预编译包曾被杀软拦截，加排除后才落地 |
+| frpc / frps | 0.71.1 | 同上 |
+
+`go install` 统一用 `GOBIN=C:\Users\zhong\bin`、`GOPROXY=https://goproxy.cn,direct`。
 
 ## 回滚
 

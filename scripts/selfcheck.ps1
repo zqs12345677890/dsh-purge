@@ -26,6 +26,12 @@ Check ($onApp -gt 0 -and $onAsar -eq 0) 'host-entry' "resources\app=$onApp app.a
 
 Check (-not (Test-Path (Join-Path $res 'app-update.yml'))) 'update-disabled' $(if (Test-Path (Join-Path $res 'app-update.yml.bak')) { 'yml renamed' } else { 'yml absent' })
 
+# 工具链只作信息输出：工具是外部依赖，缺了不影响插件本身
+$toolBin = Join-Path $env:USERPROFILE 'bin'
+$toolFiles = 'nmap\nmap.exe', 'fscan.exe', 'ffuf.exe', 'nuclei.exe', 'httpx.exe', 'subfinder.exe', 'sqlmap.cmd', 'sqlmap\sqlmap.py', 'chisel.exe', 'frpc.exe'
+$missingTools = @($toolFiles | Where-Object { -not (Test-Path (Join-Path $toolBin $_)) })
+"INFO pentest-tools $($toolFiles.Count - $missingTools.Count)/$($toolFiles.Count) in $toolBin" + $(if ($missingTools.Count) { " missing=$($missingTools -join ',')" } else { '' })
+
 $node = Get-Command node -ErrorAction SilentlyContinue
 if ($node) {
   & $node.Source (Join-Path $PSScriptRoot 'selfcheck.mjs') $aiBase
