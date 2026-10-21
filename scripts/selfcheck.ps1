@@ -28,7 +28,7 @@ Check (-not (Test-Path (Join-Path $res 'app-update.yml'))) 'update-disabled' $(i
 
 # 工具链只作信息输出：工具是外部依赖，缺了不影响插件本身
 $toolBin = Join-Path $env:USERPROFILE 'bin'
-$toolFiles = 'nmap\nmap.exe', 'fscan.exe', 'ffuf.exe', 'nuclei.exe', 'httpx.exe', 'subfinder.exe', 'sqlmap.cmd', 'sqlmap\sqlmap.py', 'chisel.exe', 'frpc.exe'
+$toolFiles = 'nmap\nmap.exe', 'fscan.exe', 'ffuf.exe', 'nuclei.exe', 'httpx.exe', 'subfinder.exe', 'sqlmap.cmd', 'sqlmap\sqlmap.py', 'chisel.exe', 'frpc.exe', 'gobuster.exe', 'feroxbuster.exe', 'wordlists\common.txt'
 $missingTools = @($toolFiles | Where-Object { -not (Test-Path (Join-Path $toolBin $_)) })
 "INFO pentest-tools $($toolFiles.Count - $missingTools.Count)/$($toolFiles.Count) in $toolBin" + $(if ($missingTools.Count) { " missing=$($missingTools -join ',')" } else { '' })
 

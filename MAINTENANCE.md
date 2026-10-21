@@ -60,8 +60,15 @@ pwsh -NoProfile -File scripts/selfcheck.ps1
 | sqlmap | 1.10.10.14（源码 + `bin\sqlmap.cmd` 包装） | 依赖系统 Python 3.12 |
 | chisel | 1.12.0 | 预编译包曾被杀软拦截，加排除后才落地 |
 | frpc / frps | 0.71.1 | 同上 |
+| gobuster | 3.8+（`go install`） | 目录/DNS 爆破 |
+| feroxbuster | 2.13.1 | 预编译 zip（`go install` 的模块路径不可用） |
+| dirsearch | 0.5.0（pip） | 在 `%APPDATA%\Python\Python312\Scripts`，已在 PATH |
+| impacket | pip | 脚本在同一个 Scripts 目录 |
+| 字典 | SecLists 子集 4 个 | `bin\wordlists\`：common / raft-small / subdomains-5000 / 10k 密码 |
 
 `go install` 统一用 `GOBIN=C:\Users\zhong\bin`、`GOPROXY=https://goproxy.cn,direct`。
+
+PowerShell 7 同时放在 `%LOCALAPPDATA%\Programs\PowerShell\7`（便携）和 `C:\Program Files\PowerShell\7`（宿主解析的首选路径，不依赖 PATH）。
 
 ## 回滚
 
