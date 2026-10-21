@@ -51,7 +51,7 @@ pwsh -NoProfile -File scripts/selfcheck.ps1
 
 | 工具 | 版本 / 来源 | 备注 |
 |---|---|---|
-| nmap | 7.92 便携包（`bin\nmap\nmap.exe`） | 未装 Npcap，`-sS/-O` 等需要抓包的扫描会退化为 connect() |
+| nmap | **7.992 官方安装版**（`C:\Program Files\Nmap\nmap.exe`） | 已在 PATH；Npcap 1.89 已装且服务 RUNNING。`-sS/-O` 需管理员：用 `bin\nmap-elevated.cmd -sS ...`（自动 UAC，结果回显） |
 | fscan | 2.2.2 | |
 | ffuf | 2.1.0-dev（`go install`） | |
 | nuclei | 3.11.1（`go install`，自动切 go1.26） | 首次跑需 `nuclei -update-templates` |
